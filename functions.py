@@ -25,5 +25,5 @@ def extract_mods(downloadFolderFiles,downloadFolderPath):
 
 def move_mods(mods,modsPath):
     for mod in mods:
-        print(f"Moving mod '{os.path.basename(mod)}'\n")  
         os.replace(mod, os.path.join(modsPath, os.path.basename(mod)))
+        print(f"Moved mod '{os.path.basename(mod)}'\n")  
