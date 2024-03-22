@@ -15,18 +15,19 @@ def get_paths():
 
 def extract_mods(downloadFolderFiles,downloadFolderPath):
     mods = []
+    modNames = []
     for file in downloadFolderFiles:
-        print(f"Looking at file '{file}'\n")
+        print(f"Looking at file '{file}' to see if it's a mod" )
         if file.endswith(".jar"):
             mods.append(os.path.join(downloadFolderPath, file))  # Construct file path
-            print(f"Added file '{file}' to mods list\n")
-        print(f'Found mods: {mods}\n')
+            modNames.append(file.strip(".jar"))
+    if mods == []:
+        print("No mods found\n")
+    else:
+        print(f'Found mods: {modNames}\n')
     return mods
 
 def move_mods(mods,modsPath):
-    if mods == []:
-        print("No mods to move")
-    else:
-        for mod in mods:
-            os.replace(mod, os.path.join(modsPath, os.path.basename(mod)))
-            print(f"Moved mod '{os.path.basename(mod)}'\n")  
+    for mod in mods:
+        os.replace(mod, os.path.join(modsPath, os.path.basename(mod)))
+        print(f"Moved mod '{os.path.basename(mod)}'\n")  
