@@ -2,12 +2,12 @@ import os
 
 def get_paths():
     print("\n")
-    downloadFolderPath = input("Download folder path: ")
+    downloadFolderPath = input("Download folder path(click enter if creator): ")
     print("\n")
     if downloadFolderPath == "":
         downloadFolderPath = r"C:\Users\datha\Downloads"  # Use raw string literal
 
-    modsPath = input("MC mod folder path: ")
+    modsPath = input("MC mod folder path(click enter if creator): ")
     print("\n")
     if modsPath == "":
         modsPath = r"C:\Users\datha\AppData\Roaming\.minecraft\mods"  # Use raw string literal
@@ -24,6 +24,9 @@ def extract_mods(downloadFolderFiles,downloadFolderPath):
     return mods
 
 def move_mods(mods,modsPath):
-    for mod in mods:
-        os.replace(mod, os.path.join(modsPath, os.path.basename(mod)))
-        print(f"Moved mod '{os.path.basename(mod)}'\n")  
+    if mods == []:
+        print("No mods to move")
+    else:
+        for mod in mods:
+            os.replace(mod, os.path.join(modsPath, os.path.basename(mod)))
+            print(f"Moved mod '{os.path.basename(mod)}'\n")  
